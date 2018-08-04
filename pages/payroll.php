@@ -209,12 +209,14 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
                                         <table class="table table-striped dataTab">
                                             <thead>
                                                 <tr>
-                                                    <th>Driver Name</th>
-                                                    <th>Start Date</th>
-                                                    <th>End Date</th>
-                                                    <th>Amount</th>
-                                                    <th>Edit</th>
-                                                    <th></th>
+                                                    <th class="col-sm-3">Driver Name</th>
+                                                    <th class="col-sm-1">Start Date</th>
+                                                    <th class="col-sm-1">End Date</th>
+                                                    <th class="col-sm-1">Amount($)</th>
+                                                    <th class="col-sm-2">Check Number</th>
+                                                    <th class="col-sm-1">Check Date</th>
+                                                    <th class="col-sm-1"></th>
+                                                    <th class="col-sm-2"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -226,15 +228,17 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
 
                                             ?>
                                                 <tr><?php if ($subject["driver_dname"] == NULL) { ?>
-                                                    <td><?php echo $subject["driver_fname"]. " ".$subject["driver_lname"]; ?></td>
+                                                    <td class="col-sm-3"><?php echo $subject["driver_fname"]. " ".$subject["driver_lname"]; ?></td>
                                                     <?php } else {?>
-                                                    <td><?php echo $subject["driver_dname"]; ?></td>
+                                                    <td class="col-sm-3"><?php echo $subject["driver_fname"]. " ".$subject["driver_lname"];  ?> (<?php echo $subject["driver_dname"]; ?>) </td>
                                                     <?php } ?>
-                                                    <td><?php echo $subject["startdate"]; ?></td>
-                                                    <td><?php echo $subject["enddate"]; ?></td>
-                                                    <td><?php echo $subject["amount"]; ?></td>
-                                                    <td class="col-xs-1"><a href="<?php echo 'driverbilling.php?payId=' . $subject['pl_id']; ?>" class="size2" style="color: #5cb85c;margin: inherit;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                                                    <td><button type="button" class="btn btn-danger" onclick="deletepay(this,<?php echo $subject["pl_id"]; ?>);">Delete</button></td>
+                                                    <td class="col-sm-1"><?php echo $subject["startdate"]; ?></td>
+                                                    <td class="col-sm-1"><?php echo $subject["enddate"]; ?></td>
+                                                    <td class="col-sm-1"><?php echo $subject["amount"]; ?></td>
+                                                    <td class="col-sm-2"><?php echo $subject["checkNumber"]; ?></td>
+                                                    <td class="col-sm-1"><?php echo $subject["savedate"]; ?></td>
+                                                    <td class="col-sm-1"><a href="<?php echo 'driverbilling.php?payId=' . $subject['pl_id']; ?>" class="size2" style="color: #5cb85c;margin: inherit;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                                    <td class="col-sm-2"><button type="button" class="btn btn-danger" onclick="deletepay(this,<?php echo $subject["pl_id"]; ?>);">Delete</button></td>
                                                 </tr>
                                             <?php } }?>
                                             </tbody>

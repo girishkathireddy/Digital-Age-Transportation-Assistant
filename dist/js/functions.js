@@ -1170,6 +1170,27 @@ function deletepay(a,id){
 
 }
 
+//delete rate
+function deleterate(a,id){
+    var sdata = {};
+    sdata['mode'] = "deleterate";
+    sdata['id'] = id;
+    log(sdata['mode']);
+    $.ajax({
+        url: 'ajax/manifest_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            $(a).parent('td').parent().remove();
+        },
+        error: function(xhr, desc, err) {
+            console.log(xhr);
+            console.log("Details: " + desc + "\nError:" + err);
+        }
+    }); // end ajax call
+
+}
+
 //Pay roll
 function deletepay_ra(a,id){
     var sdata = {};

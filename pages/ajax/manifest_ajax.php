@@ -13,6 +13,12 @@ if($obj["mode"]=="cancelalltrips"){
 
 }
 
+//For delete rate
+if($obj["mode"]=="deleterate"){
+    $del=$obj["id"];
+    daleterate($del);
+}
+
 if ($obj["mode"]=="insert_trip") {
 
 //error_log("\nInside insert_trip", 3, "C:/xampp/apache/logs/error.log");

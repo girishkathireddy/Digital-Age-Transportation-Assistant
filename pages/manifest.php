@@ -53,7 +53,7 @@ if(!empty($byBriverId)){
     $query .=" and R2.driver_id=$byBriverId";
 }
 $query.=" ORDER BY time";
-//error_log("\nManifest" . $query , 3, "C:/xampp/apache/logs/error.log");
+error_log("\nManifest" . $query , 3, "C:/xampp/apache/logs/error.log");
 $result_triporder = mysqli_query($connection, $query);
 confirm_query($result_triporder);
 $result_triplogdata = getAllTripData();
@@ -81,7 +81,7 @@ if(!empty($byBriverId)){
     $query_print .=" where u1.driver_id=$byBriverId";
 }
 $query_print .=" order by driver_fname,picktime";
-//error_log("\nManifest print query " . $query_print , 3, "C:/xampp/apache/logs/error.log");
+error_log("\nManifest print query " . $query_print , 3, "C:/xampp/apache/logs/error.log");
 $result_tripPrint = mysqli_query($connection, $query_print);
 confirm_query($result_tripPrint);
 ?>

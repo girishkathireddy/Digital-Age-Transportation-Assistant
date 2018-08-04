@@ -369,7 +369,7 @@ function delete_trip($trip_id){
 	$checkQuery1="DELETE FROM `lpr_triplog` WHERE triplog_tripid=$trip_id";
     $result_check1 = mysqli_query($connection, $checkQuery1);
     error_log("\nInside query" . $checkQuery1 , 3, "C:/xampp/apache/logs/error.log");
-    confirm_query($result_trip);
+//    confirm_query($result_trip);
 }
 
 function getAllTripData(){
@@ -1212,8 +1212,8 @@ function getDriverForM($oid,$period,$daterequired){
     global $connection;
     $query_advance  = "SELECT * FROM lpr_driver_contract
 WHERE start_date <= '$daterequired' and o_id=$oid and period='$period'
-ORDER BY start_date DESC LIMIT 1";
-    //error_log("Inside driver M query\n" . $query_advance , 3, "C:/xampp/apache/logs/error.log");
+ORDER BY start_date DESC,lpr_driver_contract.id desc LIMIT 1";
+    error_log("Inside driver M query\n" . $query_advance , 3, "C:/xampp/apache/logs/error.log");
     $result_advance = mysqli_query($connection, $query_advance);
     confirm_query($result_advance);
     $results=  mysqli_fetch_assoc($result_advance);
@@ -1325,6 +1325,34 @@ function getcancelalldate($daterequired,$clck){
         return null;
     }
 }
+
+
+function insertRates($zone_name,$zone_amount,$zone_item){
+    global $connection;
+    $query = "INSERT INTO `lpr_rates`( `zone_id`, `amount`, `item`) VALUES ($zone_name,$zone_amount,'$zone_item')";
+    error_log("Insert rates\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+    $result = mysqli_query($connection, $query);
+
+    confirm_query($result);
+    $query_id = "SELECT LAST_INSERT_ID() AS r_id ";
+    $result_id = mysqli_query($connection, $query_id);
+    confirm_query($result_id);
+    if($result_oid = mysqli_fetch_assoc($result_id)) {
+        return $result_oid;
+    } else {
+        return null;
+    }
+}
+
+function daleterate($del){
+    global $connection;
+    $query= "DELETE FROM lpr_rates where rate_id=$del";
+    error_log("\ndelete rates  " . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+    return true;
+}
+
 
 
 ?>

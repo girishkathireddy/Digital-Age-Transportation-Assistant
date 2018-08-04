@@ -3,12 +3,29 @@ include("./includes/db_connection.php");
 include("./includes/functions.php");
 ?>
 <?php
+
+if(isset($_POST['rates_submit']))
+{
+    $zone_name=$_POST['zone_name'] ;
+    $zone_amount=$_POST['rate_amount'];
+    $zone_item=$_POST['rate_item'];
+    insertRates($zone_name,$zone_amount,$zone_item);
+}
+
+
 $query_rate  = "SELECT lpr_rates.rate_id,lpr_zones.zone_id,amount,item,zone_loc FROM lpr_rates left join lpr_zones on  lpr_rates.zone_id=lpr_zones.zone_id order by item desc";
 $result_rate = mysqli_query($connection, $query_rate);
 confirm_query($result_rate);
 $query_zone="select * from lpr_zones";
 $result_zone = mysqli_query($connection, $query_zone);
 confirm_query($result_zone);
+
+
+
+
+
+
+
 ?>
 
 <?php
@@ -63,8 +80,12 @@ include("./includes/nav.php");
                 </form>
             </div>
             <!--End Modal  -->
-
-            <h1 class="page-header" style="padding-left:20px">Rates</h1>
+            <div  style="padding-top:50px;padding-bottom: 10px;">
+            <h1 class="page-header" style="padding-left:20px;display: inline">Rates</h1>
+                <div style="padding-right: 60px; float:right;display: inline">
+                    <a href="addrates.php" class="btn btn-primary btn-lg btn-block" role="button" style="display:inline;">Add Rates</a>
+                </div>
+            </div>
             <div class="col-lg-12">
                 <!-- <h1 class="page-header">School Data</h1> -->
                 <div class="panel panel-default">
@@ -79,8 +100,9 @@ include("./includes/nav.php");
                                 <tr>
                                     <th class="col-xs-3">Zone</th>
                                     <th class="col-xs-3">item</th>
-                                    <th class="col-xs-3">amount</th>
-                                    <th class="col-xs-3">Edit</th>
+                                    <th class="col-xs-2">amount</th>
+                                    <th class="col-xs-2">Edit</th>
+                                    <th class="col-xs-2"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -95,6 +117,7 @@ include("./includes/nav.php");
                                         <td class="col-xs-3"  headers ="rate"><span><?php echo $subject_rate["amount"]; ?></span></td>
                                         <td class="col-xs-3"><input type="checkbox" name="rate-checkbox" data-on-text="Edit" data-off-text="Save" checked></td>
                                         <input type="hidden" data-rateid="<?php echo $subject_rate['rate_id']; ?>">
+                                        <td><button type="button" class="btn btn-danger" onclick="deleterate(this,<?php echo $subject_rate['rate_id']; ?>);">Delete</button></td>
                                     </tr>
                                     <?php
                                 }
