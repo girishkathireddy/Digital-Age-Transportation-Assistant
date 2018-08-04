@@ -56,5 +56,6 @@ The admin goes to the Schools API at the Billing Module, selects appropriate fie
     * Ride along
     * Advances
     * Stats
-    
+<p> Further Important documents can be observed <a href="https://github.com/girishkathireddy/LPR/tree/master/resources">here</a></p> 
+
 ## Images
