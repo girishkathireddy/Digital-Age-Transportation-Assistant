@@ -58,4 +58,9 @@ The admin goes to the Schools API at the Billing Module, selects appropriate fie
     * Stats
 <p> Further Important documents can be observed <a href="https://github.com/girishkathireddy/LPR/tree/master/resources">here</a></p> 
 
-## Images
+
+## Home Image 
+![alt text](resources/image-2.PNG)
+
+## Manifest Image 
+![alt text](resources/image-3.PNG)
