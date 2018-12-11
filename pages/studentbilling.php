@@ -172,7 +172,7 @@ if(isset($_POST['cb_ctypeSelect'])) {
                  </thead>
                   <tbody>
                       <tr>
-                          <td style="width:100px;padding-left:10px;padding-right:20px"> <span class="cb_date">_______</span></td>
+                          <td style="width:100px;padding-left:10px;padding-right:10px"> <span class="cb_date">_______</span></td>
                           <td style="width:100px;padding-left:10px;padding-right:20px"><span><?php echo $invoice_number; ?><span></td>
                       </tr>
                   </tbody>
